@@ -5,9 +5,30 @@
   image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg
   color: "#e9546b"
 
-- site: 優萌初華
-  owner: 霜月琉璃
-  url: https://shoka.lostyu.me
-  desc: 琉璃的医学 & 编程笔记
-  image: https://cdn.jsdelivr.net/gh/amehime/shoka@latest/images/avatar.jpg
-  color: "#e9546b"
+- site: JACK小桔子的小屋
+  owner: JACK小桔子
+  url: https://jackxjz.vercel.app/
+  desc: 一个分享科技/日常的网站
+  image: https://jackxjz.vercel.app/medias/avatar.png
+  color: "#1E90FF"
+
+- site: UTOPIA
+  owner: UkiHG
+  url: https://ishya.top
+  desc: 散落在世界一角的故事
+  image: https://cdn.jsdelivr.net/gh/ukityh/ukityh.github.io@master/source/imgs/avatar.jpg
+  color: "#48d1cc"
+
+- site: 鑫酱个人博客
+  owner: 鑫酱 (●'◡'●)
+  url: https://allengx.gitee.io/
+  desc: 整天摸鱼，却妄想拯救世界的技术宅，不幸转身到异世界写下的博客。
+  image: https://allengx.gitee.io/images/avatar.jpg
+  color: "#3e999f"
+
+- site: 猫鼬的星球计划
+  owner: 猫鼬
+  url: https://blog.catyo.cn
+  desc: 一只小猫鼬用来刻录随想札记的黑匣子。
+  image: https://sdn.geekzu.org/avatar/9c1f881af8a4c0e5d84528aae6271c7d?s=200
+  color: "#FA8072"
