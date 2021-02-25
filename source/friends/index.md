@@ -7,8 +7,9 @@ copyright: false
 
 # 本站信息
 - 站名： 万物冬藏待春来
-- 站长： 李派亦
+- 站长： Li Pie
 - 地址： https://victue.com
+- 图像： https://victue.com/images/avatar.jpg
 - 简介： 摸鱼记录 & 划水想法
 
 # 申请方法
