@@ -90,7 +90,7 @@ iconfont: "1832207_c8i9n1ulxlt"
 
 menu:
   home: / || home
-  # about: /about/ || user
+  about: /about/ || user
   posts:
     default: / || feather
     archives: /archives/ || list-alt
