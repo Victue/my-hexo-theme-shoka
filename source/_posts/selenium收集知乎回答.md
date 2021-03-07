@@ -2,7 +2,7 @@
 title: selenium收集知乎用户回答
 author: Li Pie
 categories: 摸鱼
-tags: selenium,知乎
+tags: selenium, 知乎
 ---
 
 知乎对selenium有检测，不显示用户回答
@@ -72,9 +72,41 @@ QA.find_element_by_css_selector('button.ContentItem-action').text
 
 
 
+发布时间
+
+```python
+creat_time = QA.find_element_by_css_selector('div.ContentItem-time>a>span')
+creat_time.get_attribute('data-tooltip')
+```
+
+
+
 下一页
 
 ```python
 next_page = driver.find_element_by_css_selector('button.PaginationButton-next')
+```
+
+
+
+
+
+## 第二种方式
+
+答案列表中每个答案包含mete属性
+
+```python
+# 赞同数
+upvoteCount = QA.find_element_by_xpath('(//meta[@itemprop="upvoteCount"])[i]')
+# 发布及编辑时间,此时间为 UTC
+dateCreated = QA.find_element_by_xpath('(//meta[@itemprop="dateCreated"])[i]')
+dateModified = QA.find_element_by_xpath('(//meta[@itemprop="dateModified"])[i]')
+# 评论数
+commentCount = QA.find_element_by_xpath('(//meta[@itemprop="commentCount"])[i]')
+
+upvoteCount.get_attribute('content')
+dateCreated.get_attribute('content')
+dateModified.get_attribute('content')
+commentCount.get_attribute('content')
 ```
 
