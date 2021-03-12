@@ -3,6 +3,7 @@ title: docker desktop, WSL2报错
 author: Li Pie
 categories: 摸鱼
 tags: 问题
+date: 2021-03-07
 ---
 
 安装docker desktop for windows时遇到的错误
