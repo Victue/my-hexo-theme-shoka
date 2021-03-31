@@ -62,7 +62,7 @@ d值为
 
 "3_2.0+
 
-/api/v4/members/MarryMea/answers?include=data%5B*%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cattachment%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Creview_info%2Cexcerpt%2Cis_labeled%2Clabel_info%2Crelationship.is_authorized%2Cvoting%2Cis_author%2Cis_thanked%2Cis_nothelp%2Cis_recognized%3Bdata%5B*%5D.vessay_info%3Bdata%5B*%5D.author.badge%5B%3F(type%3Dbest_answerer)%5D.topics%3Bdata%5B*%5D.question.has_publishing_draft%2Crelationship&**offset=0**&**limit=20**&sort_by=created+
+/api/v4/members/MarryMea/answers?include=data%5B*%5D.is_normal%2Cadmin_closed_comment%2Creward_info%2Cis_collapsed%2Cannotation_action%2Cannotation_detail%2Ccollapse_reason%2Ccollapsed_by%2Csuggest_edit%2Ccomment_count%2Ccan_comment%2Ccontent%2Ceditable_content%2Cattachment%2Cvoteup_count%2Creshipment_settings%2Ccomment_permission%2Cmark_infos%2Ccreated_time%2Cupdated_time%2Creview_info%2Cexcerpt%2Cis_labeled%2Clabel_info%2Crelationship.is_authorized%2Cvoting%2Cis_author%2Cis_thanked%2Cis_nothelp%2Cis_recognized%3Bdata%5B*%5D.vessay_info%3Bdata%5B*%5D.author.badge%5B%3F(type%3Dbest_answerer)%5D.topics%3Bdata%5B*%5D.question.has_publishing_draft%2Crelationship&offset=0&limit=20&sort_by=created+
 
 "ALAd3ohjFRKPTjNZeG5_W8KUwFVpuCzndOk=|1603453023""
 
@@ -88,54 +88,45 @@ https://github.com/hellokuls/python-course/blob/master/zhihu/g_encrypt.js
 
 
 
-```
-# 加密函数
-def encrypt(d):
-    d_md5 = hashlib.new('md5', d.encode()).hexdigest()
-    with open('zhihu1.js', 'r') as f:
-        ctx = execjs.compile(f.read(), 'C:/Users/hasee/node_modules')
-    encrypt_d = ctx.call('b', d_md5)
-    return encrypt_d
-```
-
-```
-# api地址以及未加密文本
-def address(offset, limit, hash_url, main_url):
-    hash_url = hash_url.format(offset, limit)
-    url = ''.join([main_url, hash_url])
-    d = '+'.join(['3_2.0', hash_url, d_c0])
-    return url, d
+```python
+    # 加密
+    def encrypt(self, d):
+        d_md5 = hashlib.new('md5', d.encode()).hexdigest()
+        with open('zhihu1.js', 'r') as f:
+            ctx = execjs.compile(f.read(), 'C:/Users/hasee/node_modules')
+        encrypt_d = ctx.call('b', d_md5)
+        return encrypt_d
 ```
 
-```
-# 获取页面内容
-def get(offset, limit, hash_url, main_url):
-    url, d = address(offset, limit, hash_url, main_url)
-    encrypt_d = encrypt(d)
-    headers = {
-        'user-agent': User_Agent,
-        'cookie': cookie,
-        'x-zse-83': '3_2.0',
-        'x-zse-86': '2.0_%s' % encrypt_d
-    }
-
-    r = requests.get(url=url, headers=headers)
-    answer = json.loads(r.text)
-    return answer
+```python
+    # api地址以及未加密文本
+    def address(self):
+        hash_url = self.hash_url.format(self.offset)
+        url = ''.join([self.main_url, hash_url])
+        self.d = '+'.join(['3_2.0', hash_url, self.d_c0])
+        return url, self.d
 ```
 
-```
-# 下一页，很粗暴的offset+=20
-def next_page(offset):
-    offset += 20
-    return offset
-```
+```python
+    # 获取内容,answer包含20个item
+    def get(self):
+        url, d = self.address()
+        encrypt_d = self.encrypt(d)
+        headers = {
+            'user-agent': self.User_Agent,
+            'cookie': self.cookie,
+            'x-zse-83': '3_2.0',
+            'x-zse-86': '2.0_%s' % encrypt_d
+        }
 
-
+        r = requests.get(url=url, headers=headers)
+        answer = json.loads(r.text)
+        return answer
+```
 
 answer就是一个json文件，从中可以很简单找到需要的内容
 
-```
+```python
 # 问题内容
 answer['data'][i]['question']['title']
 # 问题id
@@ -156,5 +147,20 @@ answer['data'][i]['voteup_count']
 # 评论数
 answer['data'][i]['comment_count']
 ```
+
+将json文件存起来，这里使用mongodb
+
+```python
+    # save json
+    def write_database(self):
+        answer = self.get()
+        data = {
+            "name": "zhihu_a",
+            "content": answer
+        }
+        self.col.insert_one(data)
+```
+
+
 
 结束。拿着数据去分析吧
