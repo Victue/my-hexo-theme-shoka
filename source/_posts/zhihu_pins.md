@@ -8,13 +8,13 @@ date: 2021-04-07
 
 继爬知乎用户回答后，又要收集我一个非常喜欢的用户的想法了。
 
-![image-20210406111626122](C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20210406111626122.png)
+![image-20210406111626122](images\image-20210406111626122.png)
 
 这两个链接感觉都很像，好像只有offset和limit区别
 
 首先验证一下是否与回答api使用相同的加密方式
 
-![image-20210406113807974](C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20210406113807974.png)
+![image-20210406113807974](images\image-20210406113807974.png)
 
 ```python
 hash_url = '/api/v4/members/people/pins?offset=10&limit=10&includes=data%5B*%5D.upvoted_followees%2Cadmin_closed_comment'
@@ -22,13 +22,13 @@ hash_url = '/api/v4/members/people/pins?offset=10&limit=10&includes=data%5B*%5D.
 
 
 
-![image-20210406113839058](C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20210406113839058.png)
+![image-20210406113839058](images\image-20210406113839058.png)
 
-![image-20210406114157718](C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20210406114157718.png)
+![image-20210406114157718](images\image-20210406114157718.png)
 
 嗯，offset=20&limit=20 √，那么显然，10 √
 
-![image-20210406115619693](C:\Users\hasee\AppData\Roaming\Typora\typora-user-images\image-20210406115619693.png)
+![image-20210406115619693](images\image-20210406115619693.png)
 
 经测试，已经是成了。具体的可以参照用户回答文档。
 
