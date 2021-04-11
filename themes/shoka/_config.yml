@@ -286,7 +286,7 @@ baidu_push: false
 vendors:
   css:
     katex: npm/katex@0.12.0/dist/katex.min.css
-    comment: css/comment.css
+    # comment: css/comment.css
     fancybox: combine/npm/@fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css
   js:
     pace: npm/pace-js@1.0.2/pace.min.js
