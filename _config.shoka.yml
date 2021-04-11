@@ -176,9 +176,9 @@ tagcloud:
 # Available values of license: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero
 # You can set a language value if you prefer a translated version of CC license, e.g. deed.zh
 # CC licenses are available in 39 languages, you can find the specific and correct abbreviation you need on https://creativecommons.org
-creative_commons:
-  license: by-nc-sa
-  language: deed.zh
+# creative_commons:
+#   license: by-nc-sa
+#   language: deed.zh
 
 # Comments
 # Valine
