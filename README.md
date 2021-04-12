@@ -3,4 +3,4 @@
 
 仅作个人使用
 
-♥ victue.com
+♥ https://my-hexo-theme-shoka.vercel.app
